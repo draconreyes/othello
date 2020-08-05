@@ -2,17 +2,159 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout_general"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/ic_launcher_background"
+    android:backgroundTint="@android:color/darker_gray"
+    tools:context=".othello.Juego">
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_guia_arriba_grilla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="621dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_super_abajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_abajo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="74dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_izquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="370dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_derecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="353dp"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_centro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="199dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/linea_arriba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="22dp"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <LinearLayout
+        android:layout_width="148dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linea_abajo"
+        app:layout_constraintEnd_toStartOf="@+id/linea_centro"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
+        app:layout_constraintTop_toTopOf="@+id/linea_arriba"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imagen_negras"
+            android:layout_width="41dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/negras" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/puntuacion_blancas_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Puntuacion"
+                android:textColor="#f9f9f9" />
+
+            <TextView
+                android:id="@+id/puntuacion_blancas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#f9f9f9" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="153dp"
+        android:layout_height="47dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linea_abajo"
+        app:layout_constraintEnd_toStartOf="@+id/linea_derecha"
+        app:layout_constraintStart_toStartOf="@+id/linea_centro"
+        app:layout_constraintTop_toTopOf="@+id/linea_arriba">
+
+        <ImageView
+            android:id="@+id/imagen_blancas"
+            android:layout_width="41dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/blancas" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/puntuacion_negras_texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Puntuacion"
+                android:textColor="#f9f9f9" />
+
+            <TextView
+                android:id="@+id/puntuacion_negras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#f9f9f9" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/grilla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linea_super_abajo"
+        app:layout_constraintEnd_toStartOf="@+id/linea_derecha"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
+        app:layout_constraintTop_toTopOf="@+id/linea_guia_arriba_grilla"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
