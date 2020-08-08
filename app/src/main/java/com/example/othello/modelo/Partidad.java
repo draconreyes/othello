@@ -37,13 +37,17 @@ public class Partidad  implements Observer {
     public void update(Observable observable, Object o) {
         ArrayList<Object> args = (ArrayList<Object>)  o;
         Cordenada cordenada=(Cordenada) args.get(0);
-        if(turno==Tablero.BLANCA){
-            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
-            turno=Tablero.NEGRA;
-        }else{
-            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
-            turno=Tablero.BLANCA;
+        int[][] tablero_numero= this.tablero.gettablero();
+        if(tablero_numero[cordenada.geti()][cordenada.getj()] == this.tablero.POSIBLE){
+            if(turno==Tablero.BLANCA){
+                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
+                turno=Tablero.NEGRA;
+            }else{
+                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
+                turno=Tablero.BLANCA;
+            }
         }
+
 
     }
 }

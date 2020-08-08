@@ -19,6 +19,7 @@ public class Tablero {
     public static final int BLANCA =1;
     public static final int NEGRA =2;
     public static final int VACIA =0;
+    public static final int POSIBLE=3;
     private int [][] tablero;
     private ConstraintLayout casillas[][];
     private GridLayout grilla;
@@ -67,11 +68,140 @@ public class Tablero {
                 grilla.addView(casillas[i][j]);
             }
         }
+        posibilidades(this.NEGRA);
     }
-    public void agregar_ficha(int i, int j ,int color){
-        if(tablero[i][j]==this.VACIA){
+
+    public void posibilidades(int turno){
+        for (int i = 0; i < Tablero.ALTO; i++){
+            for (int j = 0; j < Tablero.ANCHO; j++) {
+                    if(tablero[i][j]!=turno && tablero[i][j]!=this.VACIA && tablero[i][j]!=this.POSIBLE) {
+                        posiciones_adyacentes(i, j);
+                    }
+            }
+        }
+    }
+
+    public void posiciones_adyacentes( int i , int j){
+        System.out.println("POSICIONES");
+        System.out.println("I:"+i+" j:"+j);
+        System.out.println(tablero[i][j]);
+        if(j-1>=0){
+            if(tablero[i][j-1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i][j-1].addView(posibilidad);
+                tablero[i][j-1]=this.POSIBLE;
+                System.out.println("izquierda");
+            }
+        }
+        if(j+1<this.ANCHO){
+            if(tablero[i][j+1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i][j+1].addView(posibilidad);
+                tablero[i][j+1]=this.POSIBLE;
+                System.out.println("izquierda");
+            }
+
+        }
+        if(i-1>=0){
+            if(tablero[i-1][j]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i-1][j].addView(posibilidad);
+                tablero[i-1][j]=this.POSIBLE;
+                System.out.println("arriba");
+            }
+
+        }
+        if(i+1<this.ALTO){
+            if(tablero[i+1][j]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i+1][j].addView(posibilidad);
+                tablero[i+1][j]=this.POSIBLE;
+                System.out.println("abajo");
+            }
+
+        }
+        if(i-1>=0 && j+1<this.ANCHO){
+            if(tablero[i-1][j+1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i-1][j+1].addView(posibilidad);
+                tablero[i-1][j+1]=this.POSIBLE;
+                System.out.println("Diagonal derecha");
+            }
+
+        }
+        if(i-1>=0 && j-1>=0){
+            if(tablero[i-1][j-1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i-1][j-1].addView(posibilidad);
+                tablero[i-1][j-1]=this.POSIBLE;
+                System.out.println("Diagonal izquierda");
+            }
+
+        }
+        if(i+1<this.ALTO && j-1>=0){
+            if(tablero[i+1][j-1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i+1][j-1].addView(posibilidad);
+                tablero[i+1][j-1]=this.POSIBLE;
+                System.out.println("Diagonal inferior izquierda");
+            }
+
+        }
+        if(i+1<this.ALTO && j+1<this.ALTO){
+            if(tablero[i+1][j+1]==this.VACIA){
+                ImageView posibilidad = new ImageView(contexto);
+                posibilidad.setBackgroundResource(R.drawable.circulo);
+                posibilidad.setMaxHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumHeight(casillas[0][0].getMaxHeight());
+                posibilidad.setMinimumWidth(casillas[0][0].getMinWidth());
+                posibilidad.setMaxWidth(casillas[0][0].getMaxWidth());
+                casillas[i+1][j+1].addView(posibilidad);
+                tablero[i+1][j+1]=this.POSIBLE;
+                System.out.println("Diagonal inferior derecha");
+            }
+
+        }
+
+    }
+    public void agregar_ficha(int i, int j ,int turno){
+        if(tablero[i][j]==this.POSIBLE){
             ImageView ficha = new ImageView(this.contexto);
-            if(color==this.BLANCA){
+            if(turno==this.BLANCA){
                 ficha.setBackgroundResource(R.drawable.blancas);
                 tablero[i][j]=this.BLANCA;
             }else{
@@ -82,13 +212,31 @@ public class Tablero {
             ficha.setMinimumHeight(casillas[0][0].getMaxHeight());
             ficha.setMinimumWidth(casillas[0][0].getMinWidth());
             ficha.setMaxWidth(casillas[0][0].getMaxWidth());
+            casillas[i][j].removeAllViews();
             casillas[i][j].addView(ficha);
+            quitar_posibilidades();
             verificar_fichas();
-        }else{
-
+            if(turno==this.BLANCA){
+                posibilidades(NEGRA);
+            }else{
+                posibilidades(BLANCA);
+            }
 
         }
     }
+
+    public void quitar_posibilidades(){
+        for (int i = 0; i < this.ALTO; i++){
+            for (int j = 0; j < this.ANCHO; j++){
+                if(tablero[i][j]==this.POSIBLE){
+                    casillas[i][j].removeAllViews();
+                    tablero[i][j]=this.VACIA;
+                }
+            }
+        }
+
+    }
+
 
     public void cambiar_color(int i, int j){
         ImageView ficha = new ImageView(this.contexto);
@@ -122,7 +270,7 @@ public class Tablero {
         boolean arriba=false;
         boolean abajo=false;
             for (int y = j+1 ,x=i+1; y < this.ALTO && x <this.ALTO; y++,x++) {
-                if (tablero[x][y] != this.VACIA) {
+                if (tablero[x][y] != this.VACIA && tablero[x][y] != this.POSIBLE) {
                     if (tablero[x][y] != tablero[i][j]) {
                         abajo = true;
                         break;
@@ -132,7 +280,7 @@ public class Tablero {
                 }
              }
         for (int x = i-1 ,y=j-1; x >= 0 && y>=0; x--,y--){
-                if (tablero[x][y] != this.VACIA) {
+                if (tablero[x][y] != this.VACIA && tablero[x][y] != this.POSIBLE) {
                     if (tablero[x][y] != tablero[i][j]) {
                         arriba = true;
                         break;
@@ -155,7 +303,7 @@ public class Tablero {
         boolean arriba=false;
         boolean abajo=false;
         for (int y = j-1 ,x=i+1; y >=0 && x <this.ALTO; y--,x++) {
-            if (tablero[x][y] != this.VACIA) {
+            if (tablero[x][y] != this.VACIA && tablero[x][y] != this.POSIBLE) {
                 if (tablero[x][y] != tablero[i][j]) {
                     abajo = true;
                     break;
@@ -165,7 +313,7 @@ public class Tablero {
             }
         }
         for (int x = i-1 ,y=j+1; x >= 0 && y< this.ALTO; x--,y++){
-            if (tablero[x][y] != this.VACIA) {
+            if (tablero[x][y] != this.VACIA && tablero[x][y] != this.POSIBLE) {
                 if (tablero[x][y] != tablero[i][j]) {
                     arriba = true;
                     break;
@@ -191,7 +339,7 @@ public class Tablero {
         boolean derecha=false;
         boolean izquierda=false;
         for (int x = j+1; x < this.ANCHO; x++){
-                if(tablero[i][x]!=this.VACIA){
+                if(tablero[i][x]!=this.VACIA && tablero[i][x] != this.POSIBLE){
                     if(tablero[i][j]!=tablero[i][x]){
                         derecha=true;
                         break;
@@ -201,7 +349,7 @@ public class Tablero {
                 }
         }
         for (int x = j-1; x >= 0; x--){
-                if(tablero[i][x]!=this.VACIA){
+                if(tablero[i][x]!=this.VACIA && tablero[i][x] != this.POSIBLE){
                     if(tablero[i][j]!=tablero[i][x]){
                         izquierda=true;
                         break;
@@ -225,7 +373,7 @@ public class Tablero {
         boolean abajo=false;
         boolean arriba=false;
         for (int x = i+1; x < this.ALTO; x++){
-            if(tablero[x][j]!=this.VACIA){
+            if(tablero[x][j]!=this.VACIA && tablero[x][j] != this.POSIBLE){
                 if(tablero[x][j]!=tablero[i][j]){
                     abajo=true;
                     break;
@@ -235,7 +383,7 @@ public class Tablero {
             }
         }
         for (int x = i-1; x >= 0; x--){
-            if(tablero[x][j]!=this.VACIA){
+            if(tablero[x][j]!=this.VACIA && tablero[x][j] != this.POSIBLE){
                 if(tablero[x][j]!=tablero[i][j]){
                     arriba=true;
                     break;
@@ -257,5 +405,8 @@ public class Tablero {
 
     public ConstraintLayout[][] getCasillas(){
         return casillas;
+    }
+    public int[][] gettablero(){
+        return tablero;
     }
 }
