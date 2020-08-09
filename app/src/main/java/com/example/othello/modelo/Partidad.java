@@ -25,10 +25,12 @@ public class Partidad  implements Observer {
     private Tablero tablero;
     private Controlador_casillas controlador;
     private Context contexto;
+    private Marcador marcador;
     private int turno;
     public Partidad (Juego juego, Context contexto) {
         tablero = new Tablero(juego, contexto);
         controlador = new Controlador_casillas(tablero.getCasillas());
+        marcador=  new Marcador(juego, contexto);
         this.turno=tablero.NEGRA;
         this.contexto = contexto;
         controlador.addObserver(this);
@@ -47,7 +49,7 @@ public class Partidad  implements Observer {
                 turno=Tablero.BLANCA;
             }
         }
-
+        marcador.Actualizar_marcador(tablero.get_n_negras(),tablero.get_n_blancas());
 
     }
 }

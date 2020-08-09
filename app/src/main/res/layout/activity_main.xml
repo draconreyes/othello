@@ -90,15 +90,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Puntuacion"
-                android:textColor="#f9f9f9" />
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/puntuacion_blancas"
+                android:id="@+id/puntuacion_negras"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="#f9f9f9" />
+                android:textColor="#000000" />
 
 
         </LinearLayout>
@@ -132,15 +132,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Puntuacion"
-                android:textColor="#f9f9f9" />
+                android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/puntuacion_negras"
+                android:id="@+id/puntuacion_blancas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="#f9f9f9" />
+                android:textColor="#000000" />
 
 
         </LinearLayout>
