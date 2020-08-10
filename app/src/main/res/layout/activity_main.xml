@@ -61,6 +61,7 @@
         app:layout_constraintGuide_percent="0.02" />
 
     <LinearLayout
+        android:id="@+id/layout_negra"
         android:layout_width="148dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -106,6 +107,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layout_blanca"
         android:layout_width="153dp"
         android:layout_height="47dp"
         android:orientation="horizontal"

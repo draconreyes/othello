@@ -32,6 +32,7 @@ public class Partidad  implements Observer {
         controlador = new Controlador_casillas(tablero.getCasillas());
         marcador=  new Marcador(juego, contexto);
         this.turno=tablero.NEGRA;
+        marcador.Turno(turno);
         this.contexto = contexto;
         controlador.addObserver(this);
     }
@@ -44,9 +45,11 @@ public class Partidad  implements Observer {
             if(turno==Tablero.BLANCA){
                 tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
                 turno=Tablero.NEGRA;
+                marcador.Turno(turno);
             }else{
                 tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
                 turno=Tablero.BLANCA;
+                marcador.Turno(turno);
             }
         }
         marcador.Actualizar_marcador(tablero.get_n_negras(),tablero.get_n_blancas());

@@ -1,10 +1,13 @@
 package com.example.othello.modelo;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.gridlayout.widget.GridLayout;
@@ -30,7 +33,9 @@ public class Tablero {
     private ConstraintLayout casillas[][];
     private GridLayout grilla;
     private Context contexto;
+    private Juego juego;
     public Tablero(Juego juego, Context contexto) {
+        this.juego = juego;
         this.numero_blancas=2;
         this.numero_negras=2;
         this.contexto=contexto;
@@ -98,10 +103,29 @@ public class Tablero {
             verificar_fichas(i,j);
             posibilidades(turno);
             contar_fichas();
+            if(fin_juego()){
+                Toast toast1 =
+                        Toast.makeText(this.contexto,
+                                "PARTIDAD TERMINADA", Toast.LENGTH_SHORT);
+
+                toast1.show();
+            }
 
         }
     }
 
+    public boolean fin_juego(){
+        boolean fin_juego=true;
+        for (int i = 0; i < Tablero.ALTO; i++){
+            for (int j = 0; j < Tablero.ANCHO; j++) {
+                if(tablero[i][j]==this.POSIBLE) {
+                  fin_juego=false;
+                  return fin_juego;
+                }
+            }
+        }
+        return  fin_juego;
+    }
     public void contar_fichas(){
         this.numero_blancas=0;
         this.numero_negras=0;
