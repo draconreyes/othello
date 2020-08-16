@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "232998091545",
+    "firebase_url": "https://othello-44e75.firebaseio.com",
+    "project_id": "othello-44e75",
+    "storage_bucket": "othello-44e75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232998091545:android:0daca090f8821a48ec6388",
+        "android_client_info": {
+          "package_name": "com.example.othello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232998091545-2pkjng94nippl3oggefmo40fu217gk7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_RS0sYUyaCvWQNb_pkjZLmio5VnSLbDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232998091545-2pkjng94nippl3oggefmo40fu217gk7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

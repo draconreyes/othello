@@ -9,14 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".othello.Juego"></activity>
-        <activity android:name=".othello.Portada">
+        <activity android:name=".othello.Autenticacion">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
+
         </activity>
+        <activity android:name=".othello.Juego" />
+
     </application>
 
 </manifest>

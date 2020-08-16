@@ -28,14 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="74dp" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/linea_izquierda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="370dp" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/linea_derecha"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="199dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/linea_arriba"
@@ -62,16 +62,13 @@
 
     <LinearLayout
         android:id="@+id/layout_negra"
-        android:layout_width="148dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="138dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linea_abajo"
         app:layout_constraintEnd_toStartOf="@+id/linea_centro"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
-        app:layout_constraintTop_toTopOf="@+id/linea_arriba"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@+id/linea_arriba">
 
         <ImageView
             android:id="@+id/imagen_negras"
