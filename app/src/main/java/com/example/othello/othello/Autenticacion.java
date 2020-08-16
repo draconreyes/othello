@@ -1,5 +1,6 @@
 package com.example.othello.othello;
 import com.example.othello.R;
+import com.example.othello.db.Database;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 
 public class Autenticacion extends AppCompatActivity  implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
     private SignInButton signInButton;
+    private Database db;
     private Button sinOutButton;
     private TextView statusTextView;
     private GoogleSignInClient mGoogleSignInClient;
@@ -56,8 +58,11 @@ public class Autenticacion extends AppCompatActivity  implements GoogleApiClient
 
     private void updateUI(FirebaseUser account) {
         if(account!=null){
-                startActivity(new Intent(Autenticacion.this, Juego.class));
+            db = new Database();
+            db.Usuario_disponible(account.getUid(),account.getDisplayName(),account.getEmail());
+            startActivity(new Intent(Autenticacion.this, Usuarios_disponibles.class));
         }else{
+
         }
     }
 
