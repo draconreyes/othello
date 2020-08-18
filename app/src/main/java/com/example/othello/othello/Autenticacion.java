@@ -60,7 +60,9 @@ public class Autenticacion extends AppCompatActivity  implements GoogleApiClient
         if(account!=null){
             db = new Database();
             db.Usuario_disponible(account.getUid(),account.getDisplayName(),account.getEmail());
-            startActivity(new Intent(Autenticacion.this, Usuarios_disponibles.class));
+            Intent intent = new Intent(this, Usuarios_disponibles.class);
+            intent.putExtra("id_cuenta", account.getUid());
+            startActivity(intent);
         }else{
 
         }
