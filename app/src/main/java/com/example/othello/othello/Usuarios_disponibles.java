@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class Usuarios_disponibles extends AppCompatActivity implements  View.OnClickListener {
+public class Usuarios_disponibles extends AppCompatActivity  {
     private String id_cuenta;
     private String id_cuenta_dos;
     private Database db;
@@ -87,12 +87,16 @@ public class Usuarios_disponibles extends AppCompatActivity implements  View.OnC
         System.out.println("......................"+dataSnapshot.getKey());
         layout.removeAllViews();
             if(dataSnapshot.exists()){
-                for( DataSnapshot sn :dataSnapshot.getChildren()){
+                for( final DataSnapshot sn :dataSnapshot.getChildren()){
                     if(!sn.getKey().toString().equals(id_cuenta)){
-                        this.id_cuenta_dos=sn.getKey().toString();
                         TextView texto_usuario= new TextView(getBaseContext());
                         texto_usuario.setText(sn.child("username").getValue().toString());
-                        texto_usuario.setOnClickListener(this);
+                        texto_usuario.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                crea_click(sn.getKey().toString());
+                            }
+                        });
                         layout.addView(texto_usuario);
                     }
                 }
@@ -100,10 +104,7 @@ public class Usuarios_disponibles extends AppCompatActivity implements  View.OnC
 
     }
 
-
-
-    @Override
-    public void onClick(View view) {
+    private void crea_click(String id_cuenta_dos) {
         parar_listener();
         Cordenada cordenada = null;
         String id_partidad=db.Crear_partidad_firebase(id_cuenta,id_cuenta_dos,cordenada,Tablero.NEGRA,1);
@@ -113,6 +114,8 @@ public class Usuarios_disponibles extends AppCompatActivity implements  View.OnC
         startActivity(intent);
 
     }
+
+
 
     private void parar_listener() {
         if(a==null || b==null){

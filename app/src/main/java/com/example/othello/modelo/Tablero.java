@@ -56,19 +56,19 @@ public class Tablero {
                 if((i==3 && j==3) ||  (i==4 && j==4)){
                     ImageView blanca = new ImageView(contexto);
                     blanca.setBackgroundResource(R.drawable.blancas);
-                    blanca.setMaxHeight(casillas[0][0].getMaxHeight());
-                    blanca.setMinimumHeight(casillas[0][0].getMaxHeight());
-                    blanca.setMinimumWidth(casillas[0][0].getMinWidth());
-                    blanca.setMaxWidth(casillas[0][0].getMaxWidth());
+                    blanca.setMaxHeight(casillas[0][0].getMaxHeight()-20);
+                    blanca.setMinimumHeight(casillas[0][0].getMaxHeight()-20);
+                    blanca.setMinimumWidth(casillas[0][0].getMinWidth()-20);
+                    blanca.setMaxWidth(casillas[0][0].getMaxWidth()-20);
                     casillas[i][j].addView(blanca);
                     tablero[i][j]=this.BLANCA;
                 }else if((i==3 && j==4) || (i==4 && j==3)){
                     ImageView negra = new ImageView(contexto);
                     negra.setBackgroundResource(R.drawable.negras);
-                    negra.setMaxHeight(casillas[0][0].getMaxHeight());
-                    negra.setMinimumHeight(casillas[0][0].getMaxHeight());
-                    negra.setMinimumWidth(casillas[0][0].getMinWidth());
-                    negra.setMaxWidth(casillas[0][0].getMaxWidth());
+                    negra.setMaxHeight(casillas[0][0].getMaxHeight()-20);
+                    negra.setMinimumHeight(casillas[0][0].getMaxHeight()-20);
+                    negra.setMinimumWidth(casillas[0][0].getMinWidth()-20);
+                    negra.setMaxWidth(casillas[0][0].getMaxWidth()-20);
                     casillas[i][j].addView(negra);
                     tablero[i][j]=this.NEGRA;
                 }else{
