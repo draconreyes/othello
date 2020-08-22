@@ -29,8 +29,7 @@ public class Database {
         mDatabase.child("partidad").child(Id).child("turno").setValue(turno);
     }
     public void Agregar_cordenada_turno(String Id,Cordenada cordenada,int turno){
-        mDatabase.child("partidad").child(Id).child("cordenada").child("i").setValue(cordenada.geti());
-        mDatabase.child("partidad").child(Id).child("cordenada").child("j").setValue(cordenada.getj());
+        mDatabase.child("partidad").child(Id).child("cordenada").setValue(cordenada);
         mDatabase.child("partidad").child(Id).child("turno").setValue(turno);
     }
     public DatabaseReference getReference(){
