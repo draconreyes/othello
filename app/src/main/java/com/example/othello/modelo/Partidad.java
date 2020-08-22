@@ -86,6 +86,7 @@ public class Partidad  implements Observer ,ValueEventListener {
                         long i=(long)sn.child("cordenada").child("i").getValue();
                         long j=(long)sn.child("cordenada").child("j").getValue();
                         cordenada= new Cordenada((int)i,(int)j);
+                        System.out.println("DIEGO ESCUCHA  : i:"+i+" j:"+j);
                         int temporal=0;
                         int[][] tablero_numero= this.tablero.gettablero();
                         if(tablero_numero[cordenada.geti()][cordenada.getj()] == this.tablero.POSIBLE ){

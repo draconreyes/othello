@@ -418,48 +418,56 @@ public class Tablero {
         if( j+1<this.ANCHO && tablero[i][j+1]!=this.VACIA && tablero[i][j+1]!=this.POSIBLE && tablero[i][j+1]!=tablero[i][j] ){
             if(verificacion_horizontal(i,j+1) ){
                 cambiar_color(i,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i,j+1,this.HORIZONTAL);
             }
         }
         if( j-1>=0 && tablero[i][j-1]!=this.VACIA && tablero[i][j-1]!=this.POSIBLE && tablero[i][j-1]!=tablero[i][j] ){
             if(verificacion_horizontal(i,j-1) ){
                 cambiar_color(i,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i,j-1,this.HORIZONTAL);
             }
         }
         if( i+1<this.ALTO && tablero[i+1][j]!=this.VACIA && tablero[i+1][j]!=this.POSIBLE && tablero[i+1][j]!=tablero[i][j] ){
             if(verificacion_vertical(i+1,j) ){
                 cambiar_color(i+1,j);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i+1,j,this.VERTICAL);
             }
         }
         if(i-1>=0 && tablero[i-1][j]!=this.VACIA && tablero[i-1][j]!=this.POSIBLE && tablero[i-1][j]!=tablero[i][j] ){
             if(verificacion_vertical(i-1,j) ){
                 cambiar_color(i-1,j);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i-1,j,this.VERTICAL);
             }
         }
         if(i-1>=0 && j-1>=0 && tablero[i-1][j-1]!=this.VACIA && tablero[i-1][j-1]!=this.POSIBLE && tablero[i-1][j-1]!=tablero[i][j] ){
             if(verificacion_diagonal_izquierda(i-1,j-1) ){
                 cambiar_color(i-1,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i-1,j-1,this.DIAGONAL_IZQUIERDA);
             }
         }
         if(i+1<this.ALTO && j+1<this.ANCHO && tablero[i+1][j+1]!=this.VACIA && tablero[i+1][j+1]!=this.POSIBLE && tablero[i+1][j+1]!=tablero[i][j] ){
             if(verificacion_diagonal_izquierda(i+1,j+1) ){
                 cambiar_color(i+1,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i+1,j+1,this.DIAGONAL_IZQUIERDA);
             }
         }
         if(i-1>=0 && j+1<this.ANCHO && tablero[i-1][j+1]!=this.VACIA && tablero[i-1][j+1]!=this.POSIBLE && tablero[i-1][j+1]!=tablero[i][j] ){
             if(verificacion_diagonal_derecha(i-1,j+1) ){
                 cambiar_color(i-1,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);;
                 verificar_fichas_sentido(i-1,j+1,this.DIAGONAL_DERECHA);
             }
         }
         if( i+1<this.ALTO && j-1>=0  && tablero[i+1][j-1]!=this.VACIA && tablero[i+1][j-1]!=this.POSIBLE && tablero[i+1][j-1]!=tablero[i][j] ){
             if(verificacion_diagonal_derecha(i+1,j-1) ){
                 cambiar_color(i+1,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+j);
                 verificar_fichas_sentido(i+1,j-1,this.DIAGONAL_DERECHA);
             }
         }
@@ -468,48 +476,56 @@ public class Tablero {
         if( j+1<this.ANCHO && tablero[i][j+1]!=this.VACIA && tablero[i][j+1]!=this.POSIBLE && tablero[i][j+1]!=tablero[i][j] && sentido==this.HORIZONTAL){
             if(verificacion_horizontal(i,j+1) ){
                 cambiar_color(i,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+(j+1));
                 verificar_fichas_sentido(i,j+1,sentido);
             }
         }
         if( j-1>=0 && tablero[i][j-1]!=this.VACIA && tablero[i][j-1]!=this.POSIBLE && tablero[i][j-1]!=tablero[i][j] && sentido==this.HORIZONTAL){
             if(verificacion_horizontal(i,j-1) ){
                 cambiar_color(i,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+i+" j:"+(j-1));
                 verificar_fichas_sentido(i,j-1,sentido);
             }
         }
         if( i+1<this.ALTO && tablero[i+1][j]!=this.VACIA && tablero[i+1][j]!=this.POSIBLE && tablero[i+1][j]!=tablero[i][j] && sentido==this.VERTICAL){
             if(verificacion_vertical(i+1,j) ){
                 cambiar_color(i+1,j);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i+1)+" j:"+j);
                 verificar_fichas_sentido(i+1,j,sentido);
             }
         }
         if(i-1>=0 && tablero[i-1][j]!=this.VACIA && tablero[i-1][j]!=this.POSIBLE && tablero[i-1][j]!=tablero[i][j] && sentido==this.VERTICAL ){
             if(verificacion_vertical(i-1,j) ){
                 cambiar_color(i-1,j);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i-1)+" j:"+j);
                 verificar_fichas_sentido(i-1,j,sentido);
             }
         }
         if(i-1>=0 && j-1>=0 && tablero[i-1][j-1]!=this.VACIA && tablero[i-1][j-1]!=this.POSIBLE && tablero[i-1][j-1]!=tablero[i][j] && sentido==this.DIAGONAL_IZQUIERDA){
             if(verificacion_diagonal_izquierda(i-1,j-1) ){
                 cambiar_color(i-1,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i-1)+" j:"+(j-1));
                 verificar_fichas_sentido(i-1,j-1,sentido);
             }
         }
         if(i+1<this.ALTO && j+1<this.ANCHO && tablero[i+1][j+1]!=this.VACIA && tablero[i+1][j+1]!=this.POSIBLE && tablero[i+1][j+1]!=tablero[i][j]&& sentido==this.DIAGONAL_IZQUIERDA ){
             if(verificacion_diagonal_izquierda(i+1,j+1) ){
                 cambiar_color(i+1,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i+1)+" j:"+(j+1));
                 verificar_fichas_sentido(i+1,j+1,sentido);
             }
         }
         if(i-1>=0 && j+1<this.ANCHO && tablero[i-1][j+1]!=this.VACIA && tablero[i-1][j+1]!=this.POSIBLE && tablero[i-1][j+1]!=tablero[i][j] && sentido==this.DIAGONAL_DERECHA ){
             if(verificacion_diagonal_derecha(i-1,j+1) ){
                 cambiar_color(i-1,j+1);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i-1)+" j:"+(j+1));
                 verificar_fichas_sentido(i-1,j+1,sentido);
             }
         }
         if( i+1<this.ALTO && j-1>=0  && tablero[i+1][j-1]!=this.VACIA && tablero[i+1][j-1]!=this.POSIBLE && tablero[i+1][j-1]!=tablero[i][j] && sentido==this.DIAGONAL_DERECHA ){
             if(verificacion_diagonal_derecha(i+1,j-1) ){
                 cambiar_color(i+1,j-1);
+                System.out.println("CAMBIE FICHA COLOR: i"+(i-1)+" j:"+(j+1));
                 verificar_fichas_sentido(i+1,j-1,sentido);
             }
         }

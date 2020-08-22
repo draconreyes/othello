@@ -32,6 +32,7 @@ public class Controlador_casillas extends Observable {
     public void Notificar_casilla(int i, int j){
         Cordenada cordenada= new Cordenada(i,j);
         ArrayList<Object> args= new ArrayList<Object>();
+        System.out.println("DIEGO CLICK : i:"+i+" j:"+j);
         System.out.println("Notificar_casilla");
         System.out.println("I:"+cordenada.geti()+" J:"+cordenada.getj());
         args.add(cordenada);
