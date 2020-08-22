@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/linea_derecha"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="353dp"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/linea_centro"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="22dp"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0" />
 
     <LinearLayout
         android:id="@+id/layout_negra"
@@ -152,8 +152,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/linea_super_abajo"
         app:layout_constraintEnd_toStartOf="@+id/linea_derecha"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
-        app:layout_constraintTop_toTopOf="@+id/linea_guia_arriba_grilla"/>
+        app:layout_constraintTop_toTopOf="@+id/linea_guia_arriba_grilla" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

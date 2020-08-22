@@ -47,7 +47,6 @@ public class Partidad  implements Observer ,ValueEventListener {
         marcador=  new Marcador(juego, contexto);
         this.turno_jugador=turno;
         this.turno=Tablero.NEGRA;
-
         this.id_partidad=id_partidad;
         db = new Database();
         marcador.Turno(turno);

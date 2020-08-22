@@ -22,6 +22,9 @@ public class Database {
     public void Usuario_no_disponible(String Id) {
         mDatabase.child("users").child(Id).child("Conectado").setValue(false);
     }
+    public void Partidad_terminada(String Id) {
+        mDatabase.child("partidad").child(Id).child("estado").setValue(0);
+    }
     public void Cambiar_turno(String Id,int turno) {
         mDatabase.child("partidad").child(Id).child("turno").setValue(turno);
     }

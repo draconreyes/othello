@@ -56,28 +56,29 @@ public class Tablero {
                 if((i==3 && j==3) ||  (i==4 && j==4)){
                     ImageView blanca = new ImageView(contexto);
                     blanca.setBackgroundResource(R.drawable.blancas);
-                    blanca.setMaxHeight(casillas[0][0].getMaxHeight()-20);
-                    blanca.setMinimumHeight(casillas[0][0].getMaxHeight()-20);
-                    blanca.setMinimumWidth(casillas[0][0].getMinWidth()-20);
-                    blanca.setMaxWidth(casillas[0][0].getMaxWidth()-20);
+                    blanca.setMaxHeight(casillas[0][0].getMaxHeight());
+                    blanca.setMinimumHeight(casillas[0][0].getMaxHeight());
+                    blanca.setMinimumWidth(casillas[0][0].getMinWidth());
+                    blanca.setMaxWidth(casillas[0][0].getMaxWidth());
                     casillas[i][j].addView(blanca);
                     tablero[i][j]=this.BLANCA;
                 }else if((i==3 && j==4) || (i==4 && j==3)){
                     ImageView negra = new ImageView(contexto);
                     negra.setBackgroundResource(R.drawable.negras);
-                    negra.setMaxHeight(casillas[0][0].getMaxHeight()-20);
-                    negra.setMinimumHeight(casillas[0][0].getMaxHeight()-20);
-                    negra.setMinimumWidth(casillas[0][0].getMinWidth()-20);
-                    negra.setMaxWidth(casillas[0][0].getMaxWidth()-20);
+                    negra.setMaxHeight(casillas[0][0].getMaxHeight());
+                    negra.setMinimumHeight(casillas[0][0].getMaxHeight());
+                    negra.setMinimumWidth(casillas[0][0].getMinWidth());
+                    negra.setMaxWidth(casillas[0][0].getMaxWidth());
                     casillas[i][j].addView(negra);
                     tablero[i][j]=this.NEGRA;
                 }else{
                     tablero[i][j]=this.VACIA;
                 }
-                casillas[i][j].setMinHeight((int) (height * 0.65 / Tablero.ALTO));
-                casillas[i][j].setMinWidth((int) (width * 0.85 / Tablero.ANCHO));
-                casillas[i][j].setMaxHeight((int) (height * 0.65 / Tablero.ALTO));
-                casillas[i][j].setMaxWidth((int) (width * 0.85 / Tablero.ANCHO));
+
+                casillas[i][j].setMinHeight((int) (height * 0.50 / 8));
+                casillas[i][j].setMinWidth((int) (width * 0.9 / 8));
+                casillas[i][j].setMaxHeight((int) (height * 0.50 / 8));
+                casillas[i][j].setMaxWidth((int) (width * 0.9 / 8));
                 grilla.addView(casillas[i][j]);
             }
         }
