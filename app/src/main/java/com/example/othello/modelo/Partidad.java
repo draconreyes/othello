@@ -36,7 +36,7 @@ public class Partidad  implements Observer ,ValueEventListener {
     private Controlador_casillas controlador;
     private Context contexto;
     private Marcador marcador;
-    private int turno_jugador;
+    private int color_jugador;
     private  static  int turno;
     private String id_partidad;
     private   Database db;
@@ -45,7 +45,7 @@ public class Partidad  implements Observer ,ValueEventListener {
         tablero = new Tablero(juego, contexto);
         controlador = new Controlador_casillas(tablero.getCasillas());
         marcador=  new Marcador(juego, contexto);
-        this.turno_jugador=turno;
+        this.color_jugador=turno;
         this.turno=Tablero.NEGRA;
         this.id_partidad=id_partidad;
         db = new Database();
@@ -60,8 +60,8 @@ public class Partidad  implements Observer ,ValueEventListener {
         ArrayList<Object> args = (ArrayList<Object>)  o;
         Cordenada cordenada=(Cordenada) args.get(0);
         int[][] tablero_numero= this.tablero.gettablero();
-        if(tablero_numero[cordenada.geti()][cordenada.getj()] == this.tablero.POSIBLE  && turno==turno_jugador){
-                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno);
+        if(tablero_numero[cordenada.geti()][cordenada.getj()] == this.tablero.POSIBLE  && turno==color_jugador){
+                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno,color_jugador);
                 System.out.println("ENTRO A ENVIAR CORDENADA ");
                 marcador.Turno(turno);
                 if(turno==Tablero.NEGRA){
@@ -81,7 +81,7 @@ public class Partidad  implements Observer ,ValueEventListener {
                     long turno_long=(long)sn.child("turno").getValue();
                     turno=(int) turno_long;
                     marcador.Turno(turno);
-                    if( turno==turno_jugador && sn.child("cordenada").child("i").exists() && sn.child("cordenada").child("j").exists() ){
+                    if( turno==color_jugador && sn.child("cordenada").child("i").exists() && sn.child("cordenada").child("j").exists() ){
                         System.out.println("SI ENTRO-----------------");
                         long i=(long)sn.child("cordenada").child("i").getValue();
                         long j=(long)sn.child("cordenada").child("j").getValue();
@@ -94,14 +94,14 @@ public class Partidad  implements Observer ,ValueEventListener {
                             }else{
                                 temporal=Tablero.NEGRA;
                             }
-                            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),temporal);
+                            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),temporal,color_jugador);
                             marcador.Actualizar_marcador(tablero.get_n_negras(),tablero.get_n_blancas());
                         }
 
                     }else{
                         System.out.println("NO ENTRO-----------------");
                         System.out.println("TURNO-----------------"+turno);
-                        System.out.println("TURNO_JUGADOR-----------------"+turno_jugador);
+                        System.out.println("TURNO_JUGADOR-----------------"+color_jugador);
                     }
 
             }

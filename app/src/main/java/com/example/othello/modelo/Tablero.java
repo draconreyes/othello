@@ -84,7 +84,7 @@ public class Tablero {
         }
         posibilidades(this.BLANCA);
     }
-    public void agregar_ficha(int i, int j ,int turno ){
+    public void agregar_ficha(int i, int j ,int turno,int color_jugador ){
         if(tablero[i][j]==this.POSIBLE){
             ImageView ficha = new ImageView(this.contexto);
             if(turno==this.BLANCA){
