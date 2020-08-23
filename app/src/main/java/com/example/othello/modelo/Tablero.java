@@ -33,6 +33,7 @@ public class Tablero extends Observable {
     public static final int VERTICAL=6;
     public static final int DIAGONAL_IZQUIERDA=7;
     public static final int DIAGONAL_DERECHA=8;
+    private   Database db;
     private int numero_blancas;
     private int numero_negras;
     private int [][] tablero;
@@ -44,6 +45,7 @@ public class Tablero extends Observable {
         this.juego = juego;
         this.numero_blancas=2;
         this.numero_negras=2;
+        db = new Database();
         this.contexto=contexto;
         this.tablero = new int[this.ALTO][this.ANCHO];
         this.grilla=juego.findViewById(R.id.grilla);
@@ -90,7 +92,7 @@ public class Tablero extends Observable {
         }
         posibilidades(this.BLANCA);
     }
-    public void agregar_ficha(int i, int j ,int turno,int color_jugador,Context contexto ){
+    public void agregar_ficha(int i, int j ,int turno,int color_jugador,String id_partidad ){
         if(tablero[i][j]==this.POSIBLE){
             ImageView ficha = new ImageView(this.contexto);
             if(turno==this.BLANCA){
@@ -112,7 +114,7 @@ public class Tablero extends Observable {
             contar_fichas();
             if(fin_juego()){
                 Notificar(color_jugador);
-
+                db.Partidad_terminada(id_partidad);
             }
 
         }
@@ -123,40 +125,17 @@ public class Tablero extends Observable {
         String resultado;
         if(numero_blancas>numero_negras){
             if(color_jugador==this.BLANCA){
-                Toast toast1 =
-                        Toast.makeText(this.contexto,
-                                "GANASTE", Toast.LENGTH_SHORT);
-                toast1.show();
                 resultado="GANASTE";
             }else{
-                Toast toast1 =
-                        Toast.makeText(this.contexto,
-                                "PERDISTE", Toast.LENGTH_SHORT);
-
-                toast1.show();
                 resultado="PERDISTE";
             }
         }else if(numero_negras>numero_blancas){
             if(color_jugador==this.NEGRA){
-                Toast toast1 =
-                        Toast.makeText(this.contexto,
-                                "GANASTE", Toast.LENGTH_SHORT);
-
-                toast1.show();
                 resultado="GANASTE";
             }else{
-                Toast toast1 =
-                        Toast.makeText(this.contexto,
-                                "PERDISTE", Toast.LENGTH_SHORT);
                 resultado="PERDISTE";
-                toast1.show();
             }
-        }else{
-            Toast toast1 =
-                    Toast.makeText(this.contexto,
-                            "TABLAS", Toast.LENGTH_SHORT);
-
-            toast1.show();
+        }else{ ;
             resultado="TABLAS";
         }
         args.add(resultado);

@@ -76,6 +76,7 @@ public class Usuarios_disponibles extends AppCompatActivity  {
                         Intent intent = new Intent(this, Juego.class);
                         intent.putExtra("turno", Tablero.BLANCA);
                         intent.putExtra("id_partidad", sn.getKey().toString());
+                        intent.putExtra("id_jugador", id_cuenta);
                         startActivity(intent);
                     }
                 }
@@ -116,6 +117,7 @@ public class Usuarios_disponibles extends AppCompatActivity  {
         Intent intent = new Intent(this, Juego.class);
         intent.putExtra("turno", Tablero.NEGRA);
         intent.putExtra("id_partidad", id_partidad);
+        intent.putExtra("id_jugador", id_cuenta);
 //        Intent intent = new Intent(this, Mensaje.class);
 //        intent.putExtra("mensaje", "GANASTE");
         startActivity(intent);

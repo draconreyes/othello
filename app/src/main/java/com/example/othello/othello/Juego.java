@@ -18,6 +18,7 @@ import java.util.Observer;
 public class Juego extends AppCompatActivity implements Observer {
     private Partidad partidad;
     private int turno;
+    private String id_jugador;
     private String id_partidad;
     private Database db;
     private Query q;
@@ -28,6 +29,7 @@ public class Juego extends AppCompatActivity implements Observer {
         setContentView(R.layout.activity_main);
         System.out.println("--------SE LANZO ONCRETE-------------------------------------------------------");
         id_partidad=getIntent().getStringExtra("id_partidad");
+        id_jugador=getIntent().getStringExtra("id_jugador");
         turno=getIntent().getIntExtra("turno",0);
         partidad= new Partidad(this,getApplicationContext(),turno,id_partidad);
     }
@@ -43,6 +45,7 @@ public class Juego extends AppCompatActivity implements Observer {
         String mensaje=(String) args.get(0);
         Intent intent = new Intent(this, Mensaje.class);
         intent.putExtra("mensaje", mensaje);
+        intent.putExtra("id_jugador", id_jugador);
         startActivity(intent);
     }
 }
