@@ -52,6 +52,7 @@ public class Partidad  implements Observer ,ValueEventListener {
         marcador.Turno(turno);
         this.contexto = contexto;
         controlador.addObserver(this);
+        tablero.addObserver(juego);
         Query q =db.getReference().child("partidad").orderByKey().equalTo(id_partidad);
         q.addValueEventListener(this);
     }
@@ -61,7 +62,7 @@ public class Partidad  implements Observer ,ValueEventListener {
         Cordenada cordenada=(Cordenada) args.get(0);
         int[][] tablero_numero= this.tablero.gettablero();
         if(tablero_numero[cordenada.geti()][cordenada.getj()] == this.tablero.POSIBLE  && turno==color_jugador){
-                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno,color_jugador);
+                tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),turno,color_jugador,contexto);
                 System.out.println("ENTRO A ENVIAR CORDENADA ");
                 marcador.Turno(turno);
                 if(turno==Tablero.NEGRA){
@@ -95,7 +96,7 @@ public class Partidad  implements Observer ,ValueEventListener {
                             }else{
                                 temporal=Tablero.NEGRA;
                             }
-                            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),temporal,color_jugador);
+                            tablero.agregar_ficha(cordenada.geti(),cordenada.getj(),temporal,color_jugador,contexto);
                             marcador.Actualizar_marcador(tablero.get_n_negras(),tablero.get_n_blancas());
                         }
 

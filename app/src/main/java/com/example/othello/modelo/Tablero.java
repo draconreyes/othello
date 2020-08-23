@@ -3,6 +3,7 @@ package com.example.othello.modelo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.View;
@@ -14,9 +15,14 @@ import androidx.gridlayout.widget.GridLayout;
 
 import com.example.othello.R;
 import com.example.othello.controlador.Controlador_casillas;
+import com.example.othello.db.Database;
 import com.example.othello.othello.Juego;
+import com.example.othello.othello.Mensaje;
 
-public class Tablero {
+import java.util.ArrayList;
+import java.util.Observable;
+
+public class Tablero extends Observable {
     public static final int ANCHO=8;
     public static final int ALTO =8;
     public static final int BLANCA =1;
@@ -84,7 +90,7 @@ public class Tablero {
         }
         posibilidades(this.BLANCA);
     }
-    public void agregar_ficha(int i, int j ,int turno,int color_jugador ){
+    public void agregar_ficha(int i, int j ,int turno,int color_jugador,Context contexto ){
         if(tablero[i][j]==this.POSIBLE){
             ImageView ficha = new ImageView(this.contexto);
             if(turno==this.BLANCA){
@@ -105,14 +111,58 @@ public class Tablero {
             posibilidades(turno);
             contar_fichas();
             if(fin_juego()){
-                Toast toast1 =
-                        Toast.makeText(this.contexto,
-                                "PARTIDAD TERMINADA", Toast.LENGTH_SHORT);
+                Notificar(color_jugador);
 
-                toast1.show();
             }
 
         }
+    }
+
+    private void Notificar(int color_jugador) {
+        ArrayList<Object> args= new ArrayList<Object>();
+        String resultado;
+        if(numero_blancas>numero_negras){
+            if(color_jugador==this.BLANCA){
+                Toast toast1 =
+                        Toast.makeText(this.contexto,
+                                "GANASTE", Toast.LENGTH_SHORT);
+                toast1.show();
+                resultado="GANASTE";
+            }else{
+                Toast toast1 =
+                        Toast.makeText(this.contexto,
+                                "PERDISTE", Toast.LENGTH_SHORT);
+
+                toast1.show();
+                resultado="PERDISTE";
+            }
+        }else if(numero_negras>numero_blancas){
+            if(color_jugador==this.NEGRA){
+                Toast toast1 =
+                        Toast.makeText(this.contexto,
+                                "GANASTE", Toast.LENGTH_SHORT);
+
+                toast1.show();
+                resultado="GANASTE";
+            }else{
+                Toast toast1 =
+                        Toast.makeText(this.contexto,
+                                "PERDISTE", Toast.LENGTH_SHORT);
+                resultado="PERDISTE";
+                toast1.show();
+            }
+        }else{
+            Toast toast1 =
+                    Toast.makeText(this.contexto,
+                            "TABLAS", Toast.LENGTH_SHORT);
+
+            toast1.show();
+            resultado="TABLAS";
+        }
+        args.add(resultado);
+        this.setChanged();
+        this.notifyObservers(args);
+
     }
 
     public boolean fin_juego(){

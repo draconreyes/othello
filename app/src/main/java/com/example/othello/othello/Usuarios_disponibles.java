@@ -1,10 +1,10 @@
 package com.example.othello.othello;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.widgets.Snapshot;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -91,6 +91,10 @@ public class Usuarios_disponibles extends AppCompatActivity  {
                     if(!sn.getKey().toString().equals(id_cuenta)){
                         TextView texto_usuario= new TextView(getBaseContext());
                         texto_usuario.setText(sn.child("username").getValue().toString());
+                        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Anton-Regular.ttf");
+                        texto_usuario.setTypeface(font);
+                        texto_usuario.setTextSize(24);
+                        texto_usuario.setTextColor( Color.argb( 255,  19, 28, 162 ));
                         texto_usuario.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -98,6 +102,7 @@ public class Usuarios_disponibles extends AppCompatActivity  {
                             }
                         });
                         layout.addView(texto_usuario);
+
                     }
                 }
             }
@@ -111,6 +116,8 @@ public class Usuarios_disponibles extends AppCompatActivity  {
         Intent intent = new Intent(this, Juego.class);
         intent.putExtra("turno", Tablero.NEGRA);
         intent.putExtra("id_partidad", id_partidad);
+//        Intent intent = new Intent(this, Mensaje.class);
+//        intent.putExtra("mensaje", "GANASTE");
         startActivity(intent);
 
     }

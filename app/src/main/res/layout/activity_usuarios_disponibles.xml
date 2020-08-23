@@ -5,8 +5,7 @@
     android:id="@+id/Layout_general"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher_background"
-    android:backgroundTint="@android:color/darker_gray"
+    android:background="@drawable/othello2"
     tools:context=".othello.Juego">
 
     <androidx.constraintlayout.widget.Guideline
@@ -58,6 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USUARIOS DISPONIBLES"
+        android:fontFamily="serif"
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/linea_abajo"
         app:layout_constraintEnd_toStartOf="@+id/linea_derecha"
         app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
@@ -71,6 +72,6 @@
         app:layout_constraintBottom_toTopOf="@+id/linea_super_abajo"
         app:layout_constraintEnd_toStartOf="@+id/linea_derecha"
         app:layout_constraintStart_toStartOf="@+id/linea_izquierda"
-        app:layout_constraintTop_toTopOf="@+id/linea_guia_arriba_grilla"></LinearLayout>
+        app:layout_constraintTop_toTopOf="@+id/linea_guia_arriba_grilla" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
